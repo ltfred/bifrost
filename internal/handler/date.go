@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func TodayInfo(c *gin.Context)  {
+func TodayInfo(c *gin.Context) {
 	now := time.Now()
 	dateStr := c.DefaultQuery("date", now.Format(pkg.DateFormat))
 	loc, _ := time.LoadLocation("Local")

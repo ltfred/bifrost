@@ -29,4 +29,10 @@ func TestTodayInfo(t *testing.T) {
 	assert.Equal(t, response["date"], "2020-11-23")
 	assert.Equal(t, response["lunarCalender"], "庚子鼠年十月初九日")
 	assert.Equal(t, response["weekday"], float64(1))
+
+	resp = Get("/api/v1/today/?date=2020-1123", nil, t)
+	assert.Equal(t, resp.Code, 400)
+	err = json.Unmarshal(resp.Body.Bytes(), &response)
+	assert.Equal(t, err, nil)
+	assert.Equal(t, response["message"], "错误的时间格式")
 }

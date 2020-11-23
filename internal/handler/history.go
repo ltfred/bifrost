@@ -29,8 +29,8 @@ func History(c *gin.Context)  {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "出错啦"})
 	}
 	result := map[string]interface{}{}
-	er := json.Unmarshal(body, &result)
-	if er != nil {
+	err = json.Unmarshal(body, &result)
+	if err != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"message": "出错啦"})
 	}
 	c.JSON(http.StatusOK, gin.H{"message": result["result"]})
