@@ -17,5 +17,13 @@ func TodayInfo(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "错误的时间格式"})
 	}
 	lunarCalender := solarlunar.SolarToChineseLuanr(date.Format(pkg.DateFormat))
-	c.JSON(http.StatusOK, gin.H{"date": date.Format(pkg.DateFormat), "weekday": date.Weekday(), "lunarCalender": lunarCalender})
+	c.JSON(
+		http.StatusOK,
+		gin.H{
+			"date": date.Format(pkg.DateFormat),
+			"weekday": date.Weekday(),
+			"lunarCalender": lunarCalender,
+			"yearDay": date.YearDay(),
+		},
+		)
 }
