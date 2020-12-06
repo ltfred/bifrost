@@ -15,5 +15,6 @@ func Routers() *gin.Engine {
 	})
 	r.GET("/api/v1/today/", handler.TodayInfo)
 	r.GET("/api/v1/history/", handler.History)
+	r.GET("/api/v1/district/", handler.District)
 	return r
 }
